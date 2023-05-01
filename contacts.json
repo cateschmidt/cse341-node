@@ -1,0 +1,24 @@
+{
+    "contact": {
+        "firstName": "Caitlyn",
+        "lastName": "Schmidt",
+        "email": "c8schmidt@gmail.com",
+        "favoriteColor": "Turquoise",
+        "birthday": "12/15/2004"
+    },
+    "contact1": {
+        "firstName": "Aaron",
+        "lastName": "Schmidt",
+        "email": "as@gmail.com",
+        "favoriteColor": "Blue",
+        "birthday": "12/6/2004"
+    },
+    "contact2": {
+        "firstName": "Ariel",
+        "lastName": "Schmidt",
+        "email": "as3@gmail.com",
+        "favoriteColor": "Pink",
+        "birthday": "12/5/2004"
+    }
+
+}
