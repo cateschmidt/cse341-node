@@ -8,3 +8,42 @@ GET http://localhost:8080/contacts HTTP/1.1
 
 ###
 GET https://cse341-node-7u0k.onrender.com/contacts HTTP/1.1
+
+### Create/Post Contact (local)
+POST http://localhost:8080/contacts HTTP/1.1
+content-type: application/json
+
+{
+"firstName":"Amanda", "lastName":"Smith", "email":"asmith@gmail.com", "favoriteColor":"Pink", "birthday":"06/19/2004"
+}
+
+### Update Put Contact local
+
+PUT http://localhost:8080/contacts/645721452ed39be08934aa08 HTTP/1.1
+content-type: application/json
+
+{
+"firstName":"Amanda", "lastName":"Smith", "email":"asmith@gmail.com", "favoriteColor":"Purple", "birthday":"06/19/2004"
+}
+
+### Delete contact local
+DELETE http://localhost:8080/contacts/645721452ed39be08934aa08 HTTP/1.1
+
+### Create/Post Contact (Render)
+POST https://cse341-node-7u0k.onrender.com/contacts HTTP/1.1
+content-type: application/json
+
+{
+"firstName":"Amanda", "lastName":"Smith", "email":"asmith@gmail.com", "favoriteColor":"Pink", "birthday":"06/19/2004"
+}
+
+### Update/Put Contact (Render)
+PUT https://cse341-node-7u0k.onrender.com/contacts HTTP/1.1
+content-type: application/json
+
+{
+"firstName":"Amanda", "lastName":"Smith", "email":"asmith21@gmail.com", "favoriteColor":"Blue", "birthday":"06/19/2004"
+}
+
+### Delete Contact (Render)
+DELETE https://cse341-node-7u0k.onrender.com/contacts HTTP/1.1
