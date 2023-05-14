@@ -23,7 +23,7 @@ content-type: application/json
 
 ### Update Put Contact local
 
-PUT http://localhost:8080/contacts/64572ab247e62b53c4c70e48 HTTP/1.1
+PUT http://localhost:8080/contacts/64573009253333a47de74c5f HTTP/1.1
 content-type: application/json
 
 {
@@ -35,7 +35,7 @@ content-type: application/json
 }
 
 ### Delete contact local
-DELETE http://localhost:8080/contacts/64572ab247e62b53c4c70e48 HTTP/1.1
+DELETE http://localhost:8080/contacts/64573009253333a47de74c5f HTTP/1.1
 
 ### Create/Post Contact (Render)
 POST https://cse341-node-7u0k.onrender.com/contacts HTTP/1.1
@@ -50,16 +50,16 @@ content-type: application/json
 }
 
 ### Update/Put Contact (Render)
-PUT https://cse341-node-7u0k.onrender.com/contacts HTTP/1.1
+PUT https://cse341-node-7u0k.onrender.com/contacts/64573070c1b308069c2ca14d HTTP/1.1
 content-type: application/json
 
 {
 "firstName":"Amanda", 
 "lastName":"Smith", 
-"email":"asmith21@gmail.com", 
+"email":"asmith21@yahoo.com", 
 "favoriteColor":"Blue", 
 "birthday":"06/19/2004"
 }
 
 ### Delete Contact (Render)
-DELETE https://cse341-node-7u0k.onrender.com/contacts HTTP/1.1
+DELETE https://cse341-node-7u0k.onrender.com/contacts/64573070c1b308069c2ca14d HTTP/1.1
