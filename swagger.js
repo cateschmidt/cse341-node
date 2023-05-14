@@ -5,7 +5,7 @@ const doc = {
     title: 'Contacts',
     description: 'Get an updated contact'
   },
-  host: 'https://cse341-node-7u0k.onrender.com',
+  host: 'cse341-node-7u0k.onrender.com',
   schemes: ['https']
 };
 
