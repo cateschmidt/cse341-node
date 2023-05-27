@@ -26,10 +26,47 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "vesselName": {
+                  "example": "any"
+                },
+                "vesselType": {
+                  "example": "any"
+                },
+                "color": {
+                  "example": "any"
+                },
+                "hin": {
+                  "example": "any"
+                },
+                "service": {
+                  "example": "any"
+                },
+                "ownerEmail": {
+                  "example": "any"
+                },
+                "ownerName": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -55,9 +92,46 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "vesselName": {
+                  "example": "any"
+                },
+                "vesselType": {
+                  "example": "any"
+                },
+                "color": {
+                  "example": "any"
+                },
+                "hin": {
+                  "example": "any"
+                },
+                "service": {
+                  "example": "any"
+                },
+                "ownerEmail": {
+                  "example": "any"
+                },
+                "ownerName": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       },
       "delete": {
         "description": "",

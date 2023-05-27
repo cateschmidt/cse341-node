@@ -13,9 +13,9 @@ router.get('/', handleErrors(boatsController.getAll));
 
 router.get('/:id', handleErrors(boatsController.getSingle));
 
-router.post('/', boatsRules(), boatsValidate, handleErrors(boatsController.createBoat));
+router.post('/', boatsRules(), boatsValidate, boatsController.createBoat);
 
-router.put('/:id', handleErrors(boatsController.updateBoat));
+router.put('/:id', boatsController.updateBoat);
 
 router.delete('/:id', handleErrors(boatsController.deleteBoat));
 

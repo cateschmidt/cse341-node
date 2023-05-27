@@ -1,6 +1,6 @@
 const {body, validationResult} = require("express-validator");
 
-const contactsRules = () => {
+const boatsRules = () => {
     return [
         body("vesselName").trim().escape().isLength({min:1}).withMessage("Error, please enter vessel name"),
         body("vesselType").trim().escape().isLength({min:1}).withMessage("Error, please enter vessel type"),

@@ -1,7 +1,7 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 const getAll = async (req, res, next) => {
-  throw new Error
+
   const result = await mongodb.getDb().db('week2').collection('boats').find();
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
@@ -27,9 +27,9 @@ const getSingle = async (req, res, next) => {
 // }
 };
 
-module.exports = { getAll, getSingle };
 
 const createBoat = async (req, res) => {
+  try {
   const boat = {
     vesselName: req.body.vesselName,
     vesselType: req.body.vesselType,
@@ -46,11 +46,15 @@ const createBoat = async (req, res) => {
   } else {
     res.status(500).json(response.error || 'Some error occurred while creating the boat.');
   }
+}catch(error){
+res.status(500).json({message : error})
+}
 };
 
 const updateBoat = async (req, res) => {
   const userId = new ObjectId(req.params.id);
   // be aware of updateOne if you only want to update specific fields
+  try {
   const boat = {
     vesselName: req.body.vesselName,
     vesselType: req.body.vesselType,
@@ -70,6 +74,9 @@ const updateBoat = async (req, res) => {
     res.status(204).send();
   } else {
     res.status(500).json(response.error || 'Some error occurred while updating the contact.');
+  }
+}catch(error){
+  res.status(500).json({message : error})
   }
 };
 
