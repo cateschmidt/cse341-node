@@ -1,0 +1,30 @@
+{
+    "boat": {
+        "vesselName": "Antigoon",
+        "vesselType": "Sailboat",
+        "color": "Green",
+        "hin": "123456789",
+        "service": "oil change",
+        "email": "c8schmidt@gmail.com",
+        "ownerName": "Phil"
+    },
+    "boat1": {
+        "vesselName": "Kids Again",
+        "vesselType": "Catamaran",
+        "color": "White",
+        "hin": "987654321",
+        "service": "fiberglass repair",
+        "email": "cat@gmailcom",
+        "ownerName": "Ben"
+    },
+    "boat2": {
+        "vesselName": "Fast Car",
+        "vesselType": "Powerboat",
+        "color": "Blue",
+        "hin": "678987654",
+        "service": "transmission repair",
+        "email": "fastcar@gmail.com",
+        "ownerName": "Tim"
+    }
+
+}
