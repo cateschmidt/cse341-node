@@ -29,7 +29,7 @@ const getSingle = async (req, res, next) => {
     res.status(200).json(lists[0]); // we just need the first one (the only one)
   });
 }catch(error){
-  res.status(500).json({message : error})
+  res.status(500).json({message : "unable to get ID, make sure you have entered a valid ID"})
   }
 };
 
@@ -85,7 +85,7 @@ const updateBoat = async (req, res) => {
     res.status(500).json(response.error || 'Some error occurred while updating the contact.');
   }
 }catch(error){
-  res.status(500).json({message : error})
+  res.status(500).json({message : "unable to get ID, make sure you have entered a valid ID"})
   }
 };
 
@@ -103,7 +103,7 @@ const deleteBoat = async (req, res) => {
     res.status(500).json(response.error || 'An error occurred while deleting the boat.');
   }
 }catch(error){
-  res.status(500).json({message : error})
+  res.status(500).json({message : "unable to get ID, make sure you have entered a valid ID"})
   }
 };
 
