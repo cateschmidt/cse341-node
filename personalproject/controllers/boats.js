@@ -1,7 +1,7 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 const getAll = async (req, res, next) => {
-
+  try{
   const result = await mongodb.getDb().db('week2').collection('boats').find();
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
@@ -11,20 +11,23 @@ const getAll = async (req, res, next) => {
   // } catch (error){
   //   console.log(error);
   // }
+}catch(error){
+  res.status(500).json({message : error})
+  }
 };
 
 
 const getSingle = async (req, res, next) => {
-  // try{
+  try{
   const userId = new ObjectId(req.params.id);
   const result = await mongodb.getDb().db('week2').collection('boats').find({_id:userId});
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists[0]); // we just need the first one (the only one)
   });
-// }catch(error){
-//   console.log(error)
-// }
+}catch(error){
+  res.status(500).json({message : error})
+  }
 };
 
 
@@ -81,6 +84,7 @@ const updateBoat = async (req, res) => {
 };
 
 const deleteBoat = async (req, res) => {
+  try {
   const userId = new ObjectId(req.params.id);
   const response = await mongodb.getDb().db('week2').collection('boats').deleteOne({ _id: userId }, true);
   console.log(response);
@@ -88,6 +92,9 @@ const deleteBoat = async (req, res) => {
     res.status(204).send();
   } else {
     res.status(500).json(response.error || 'An error occurred while deleting the boat.');
+  }
+}catch(error){
+  res.status(500).json({message : error})
   }
 };
 
