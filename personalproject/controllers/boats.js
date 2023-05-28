@@ -21,6 +21,9 @@ const getSingle = async (req, res, next) => {
   try{
   const userId = new ObjectId(req.params.id);
   const result = await mongodb.getDb().db('week2').collection('boats').find({_id:userId});
+  if (!result){
+    res.status(404).json({message : "unable to find ID"})
+  }
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists[0]); // we just need the first one (the only one)
@@ -72,6 +75,9 @@ const updateBoat = async (req, res) => {
     .db('week2')
     .collection('boats')
     .replaceOne({ _id: userId }, boat);
+    if (!result){
+      res.status(404).json({message : "unable to find ID"})
+    }
   console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
@@ -87,6 +93,9 @@ const deleteBoat = async (req, res) => {
   try {
   const userId = new ObjectId(req.params.id);
   const response = await mongodb.getDb().db('week2').collection('boats').deleteOne({ _id: userId }, true);
+  if (!result){
+    res.status(404).json({message : "unable to find ID"})
+  }
   console.log(response);
   if (response.deletedCount > 0) {
     res.status(204).send();
