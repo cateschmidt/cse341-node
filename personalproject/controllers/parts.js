@@ -2,7 +2,7 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 const getAll = async (req, res, next) => {
   try{
-  const result = await mongodb.getDb().db('week2').collection('parts').find();
+  const result = await mongodb.getDb().db('week2').collection('inventory').find();
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists); // we just need the first one (the only one)
@@ -20,7 +20,7 @@ const getAll = async (req, res, next) => {
 const getSingle = async (req, res, next) => {
   try{
   const userId = new ObjectId(req.params.id);
-  const result = await mongodb.getDb().db('week2').collection('parts').find({_id:userId});
+  const result = await mongodb.getDb().db('week2').collection('inventory').find({_id:userId});
   if (!result){
     res.status(404).json({message : "unable to find ID"})
   }
@@ -44,7 +44,7 @@ const createPart = async (req, res) => {
     
   }; 
   console.log(part);
-  const response = await mongodb.getDb().db('week2').collection('parts').insertOne(part);
+  const response = await mongodb.getDb().db('week2').collection('inventory').insertOne(part);
   if (response.acknowledged) {
     res.status(201).json(response); 
   } else {
@@ -69,7 +69,7 @@ const updatePart = async (req, res) => {
   const response = await mongodb
     .getDb()
     .db('week2')
-    .collection('parts')
+    .collection('inventory')
     .replaceOne({ _id: userId }, part);
     if (!response){
       res.status(404).json({message : "unable to find ID"})
@@ -88,7 +88,7 @@ const updatePart = async (req, res) => {
 const deletePart = async (req, res) => {
   try {
   const userId = new ObjectId(req.params.id);
-  const response = await mongodb.getDb().db('week2').collection('parts').deleteOne({ _id: userId }, true);
+  const response = await mongodb.getDb().db('week2').collection('inventory').deleteOne({ _id: userId }, true);
   if (!response){
     res.status(404).json({message : "unable to find ID"})
   }
