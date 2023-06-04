@@ -1,0 +1,27 @@
+{
+    "part": {
+        "name": "gasket",
+        "quantity": "15",
+        "system": "engine",
+        "upc": "123456789"
+    },
+    "part1": {
+        "name": "barnacle buster",
+        "quantity": "10",
+        "system": "general maintenance",
+        "upc": "3454652387"
+    },
+    "part2": {
+        "name": "transmission",
+        "quantity": "5",
+        "system": "engine",
+        "upc": "678987654"
+    },
+    "part3": {
+        "name": "portlight",
+        "quantity": "3",
+        "system": "hull",
+        "upc": "678987632"
+    }
+
+}
