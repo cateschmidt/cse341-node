@@ -2,7 +2,7 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 const getAll = async (req, res, next) => {
   try{
-  const result = await mongodb.getDb().db('week2').collection('boats').find();
+  const result = await mongodb.getDb().db('week2').collection('parts').find();
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists); // we just need the first one (the only one)
@@ -20,7 +20,7 @@ const getAll = async (req, res, next) => {
 const getSingle = async (req, res, next) => {
   try{
   const userId = new ObjectId(req.params.id);
-  const result = await mongodb.getDb().db('week2').collection('boats').find({_id:userId});
+  const result = await mongodb.getDb().db('week2').collection('parts').find({_id:userId});
   if (!result){
     res.status(404).json({message : "unable to find ID"})
   }
@@ -34,47 +34,43 @@ const getSingle = async (req, res, next) => {
 };
 
 
-const createBoat = async (req, res) => {
+const createPart = async (req, res) => {
   try {
-  const boat = {
-    vesselName: req.body.vesselName,
-    vesselType: req.body.vesselType,
-    color: req.body.color,
-    hin: req.body.hin,
-    service: req.body.service,
-    ownerEmail: req.body.ownerEmail,
-    ownerName: req.body.ownerName
+  const part = {
+    name: req.body.name,
+    quantity: req.body.quantity,
+    system: req.body.system,
+    upc: req.body.upc,
+    
   }; 
-  console.log(boat);
-  const response = await mongodb.getDb().db('week2').collection('boats').insertOne(boat);
+  console.log(part);
+  const response = await mongodb.getDb().db('week2').collection('parts').insertOne(part);
   if (response.acknowledged) {
     res.status(201).json(response); 
   } else {
-    res.status(500).json(response.error || 'Some error occurred while creating the boat.');
+    res.status(500).json(response.error || 'Some error occurred while creating the part entry.');
   }
 }catch(error){
 res.status(500).json({message : error})
 }
 };
 
-const updateBoat = async (req, res) => {
+const updatePart = async (req, res) => {
   const userId = new ObjectId(req.params.id);
   // be aware of updateOne if you only want to update specific fields
   try {
-  const boat = {
-    vesselName: req.body.vesselName,
-    vesselType: req.body.vesselType,
-    color: req.body.color,
-    hin: req.body.hin,
-    service: req.body.service,
-    ownerEmail: req.body.ownerEmail,
-    ownerName: req.body.ownerName
-  };
+    const part = {
+        name: req.body.name,
+        quantity: req.body.quantity,
+        system: req.body.system,
+        upc: req.body.upc,
+        
+      }; 
   const response = await mongodb
     .getDb()
     .db('week2')
-    .collection('boats')
-    .replaceOne({ _id: userId }, boat);
+    .collection('parts')
+    .replaceOne({ _id: userId }, part);
     if (!response){
       res.status(404).json({message : "unable to find ID"})
     }
@@ -82,17 +78,17 @@ const updateBoat = async (req, res) => {
   if (response.modifiedCount > 0) {
     res.status(204).send();
   } else {
-    res.status(500).json(response.error || 'Some error occurred while updating the contact.');
+    res.status(500).json(response.error || 'Some error occurred while updating the entry.');
   }
 }catch(error){
   res.status(500).json({message : "unable to get ID, make sure you have entered a valid ID"})
   }
 };
 
-const deleteBoat = async (req, res) => {
+const deletePart = async (req, res) => {
   try {
   const userId = new ObjectId(req.params.id);
-  const response = await mongodb.getDb().db('week2').collection('boats').deleteOne({ _id: userId }, true);
+  const response = await mongodb.getDb().db('week2').collection('parts').deleteOne({ _id: userId }, true);
   if (!result){
     res.status(404).json({message : "unable to find ID"})
   }
@@ -100,7 +96,7 @@ const deleteBoat = async (req, res) => {
   if (response.deletedCount > 0) {
     res.status(204).send();
   } else {
-    res.status(500).json(response.error || 'An error occurred while deleting the boat.');
+    res.status(500).json(response.error || 'An error occurred while deleting the part.');
   }
 }catch(error){
   res.status(500).json({message : "unable to get ID, make sure you have entered a valid ID"})
@@ -110,9 +106,7 @@ const deleteBoat = async (req, res) => {
 module.exports = {
   getAll,
   getSingle,
-  createBoat,
-  updateBoat,
-  deleteBoat
+  createPart,
+  updatePart,
+  deletePart
 };
-
-
