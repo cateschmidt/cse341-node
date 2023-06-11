@@ -1,5 +1,6 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
+
 const getAll = async (req, res, next) => {
   try{
   const result = await mongodb.getDb().db('week2').collection('boats').find();
@@ -93,7 +94,7 @@ const deleteBoat = async (req, res) => {
   try {
   const userId = new ObjectId(req.params.id);
   const response = await mongodb.getDb().db('week2').collection('boats').deleteOne({ _id: userId }, true);
-  if (!result){
+  if (!response){
     res.status(404).json({message : "unable to find ID"})
   }
   console.log(response);

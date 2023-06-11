@@ -4,20 +4,33 @@ const express = require('express');
 const partsController = require('../controllers/parts');
 
 const router = express.Router();
+// week 8 
+function isAuthenticated(req, res, next) {
+    try {
+      if (req.session.token) {
+        next();
+      } else {
+        throw new Error("Please login");
+      }
+    } catch (error) {
+      res.status(400).json({message: "Please login"});
+    }
+  }
+// week 8
 
 const {handleErrors} = require("../utilities/utilities.js");
 const {partsValidate, partsRules} = require("../utilities/validator.js");
 
 // GET /feed/posts
-router.get('/', handleErrors(partsController.getAll));
+router.get('/', isAuthenticated, handleErrors(partsController.getAll));
 
-router.get('/:id', handleErrors(partsController.getSingle));
+router.get('/:id', isAuthenticated, handleErrors(partsController.getSingle));
 
-router.post('/', partsRules(), partsValidate, partsController.createPart);
+router.post('/', isAuthenticated, partsValidate, partsController.createPart);
 
-router.put('/:id', partsRules(), partsValidate, partsController.updatePart);
+router.put('/:id', isAuthenticated, partsValidate, partsController.updatePart);
 
-router.delete('/:id', handleErrors(partsController.deletePart));
+router.delete('/:id', isAuthenticated, handleErrors(partsController.deletePart));
 
 // localhost:8080/professional/
 module.exports = router;
