@@ -19,7 +19,7 @@ function isAuthenticated(req, res, next) {
 // week 8
 
 const {handleErrors} = require("../utilities/utilities.js");
-const {partsValidate, partsRules} = require("../utilities/validator.js");
+const {partsValidate} = require("../utilities/validateparts.js");
 
 // GET /feed/posts
 router.get('/', isAuthenticated, handleErrors(partsController.getAll));
