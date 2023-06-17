@@ -71,3 +71,28 @@ content-type: application/json
 
 ### Delete Boat (Render)
 DELETE https://cse341-node-7u0k.onrender.com/boats/64573070c1b308069c2ca14d HTTP/1.1
+
+### Create/Post Boat (Render)
+POST https://cse341-node-7u0k.onrender.com/boats HTTP/1.1
+content-type: application/json
+
+    {
+        "name": "portlight",
+        "quantity": "3",
+        "system": "hull",
+        "upc": "678987632"
+    }
+
+# Need to copy/paste id of new entry to post
+# Create/Post Part
+PUT https://cse341-node-7u0k.onrender.com/boats/ HTTP/1.1
+content-type: application/json
+
+    {
+        "name": "portlight",
+        "quantity": "3",
+        "system": "hull",
+        "upc": "678987632"
+    }
+### Delete Part (Render)
+DELETE https://cse341-node-7u0k.onrender.com/boats/64573070c1b308069c2ca14d HTTP/1.1
